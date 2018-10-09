@@ -48,7 +48,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         Properties properties = new Properties();
         properties.put("hibernate.show_sql","true");
         properties.put("hibernate.hbm2ddl.auto","update");
-        factoryBean.setPackagesToScan("com.cruds.posdemo");
+        factoryBean.setPackagesToScan("com.cruds.pos.entity");
         factoryBean.setHibernateProperties(properties);
         factoryBean.setAnnotatedClasses(User.class);
         factoryBean.setAnnotatedClasses(Tax.class);
