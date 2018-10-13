@@ -11,6 +11,7 @@
   <title>POSDemo</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="static/vendors/iconfonts/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="static/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="static/vendors/css/vendor.bundle.addons.css">
   <link rel="stylesheet" href="static/css/style.css">

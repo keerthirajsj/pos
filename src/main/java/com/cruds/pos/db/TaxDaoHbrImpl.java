@@ -33,11 +33,25 @@ public class TaxDaoHbrImpl implements TaxDao{
 		return true;
 	}
 	
+	public List<Tax> getAllActiveTax() {
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		String hql = "FROM Tax where status=:status";
+		Query query = session.createQuery(hql); 
+		query.setParameter("status", "Active");
+		List<Tax> results = query.list();
+		tx.commit();
+		session.close();
+		return results;
+		
+	}
+	
 	public List<Tax> getAllTax() {
 		Session session = sessionFactory.openSession();
 
 		Transaction tx = session.beginTransaction();
-		String hql = "FROM Tax"; 
+		String hql = "FROM Tax";
 		Query query = session.createQuery(hql); 
 		List<Tax> results = query.list();
 		tx.commit();
@@ -61,7 +75,6 @@ public class TaxDaoHbrImpl implements TaxDao{
 		session.close();
 		return true;
 	}
-	
 	
 	
 	

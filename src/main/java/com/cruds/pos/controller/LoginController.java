@@ -57,7 +57,7 @@ public class LoginController {
 			{
 				session.setAttribute("uname",username);
 				model.addAttribute("USER", user);
-				return "redirect:home.html";
+				return "redirect:users.html";
 			}
 			
 //			else if (user.equals("Librarian"))

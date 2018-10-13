@@ -18,11 +18,16 @@ public class TaxService {
 	{
 		return dao.addTax(tax);
 	}
-	
-	public List<Tax> getAllTax()
+	public List<Tax> getAllTax1()
 	{
 		
 		return dao.getAllTax();
+	}
+	
+	public List<Tax> getAllActiveTax()
+	{
+		
+		return dao.getAllActiveTax();
 	}
 	
 	public boolean setInactive(int id,LocalDate endDate)

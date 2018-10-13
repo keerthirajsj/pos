@@ -2,4 +2,4 @@
 
 
 
-    <c:redirect url="home.html"/>    
+    <c:redirect url="taxes.html"/>    

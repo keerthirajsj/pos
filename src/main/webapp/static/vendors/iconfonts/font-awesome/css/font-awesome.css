@@ -762,6 +762,10 @@
 .fa-pinterest-square:before {
   content: "\f0d3";
 }
+.tab { 
+       display:inline-block; 
+       margin-left: 25px; 
+}
 .fa-google-plus-square:before {
   content: "\f0d4";
 }
