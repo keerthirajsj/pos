@@ -35,4 +35,13 @@ public class TaxService {
 		return dao.setInactive(id, endDate);
 	}
 
+	public List<Tax> getAllTaxList()
+	{
+		
+		return dao.getAllTaxList();
+	}
+	public Tax getTaxObject(String name)
+	{
+		return dao.getTaxObject(name);
+	}
 }

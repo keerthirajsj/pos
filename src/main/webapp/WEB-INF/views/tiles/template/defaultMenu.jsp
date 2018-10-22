@@ -9,7 +9,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="menu.html">
               <i class="fa fa-calendar"></i>
               <span class="menu-title tab">Menu</span>
             </a>

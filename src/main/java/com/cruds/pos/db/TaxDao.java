@@ -10,5 +10,7 @@ public interface TaxDao {
 	public boolean addTax(Tax tax);
 	public List<Tax> getAllActiveTax();
 	public List<Tax> getAllTax();
+	public List<Tax> getAllTaxList();
 	public boolean setInactive(int id,LocalDate endDate);
+	public Tax getTaxObject(String name);
 }

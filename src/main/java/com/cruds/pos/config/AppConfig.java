@@ -22,6 +22,10 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.cruds.pos.entity.FormBeanTax;
+import com.cruds.pos.entity.L1Menu;
+import com.cruds.pos.entity.L2Menu;
+import com.cruds.pos.entity.L3Menu;
+import com.cruds.pos.entity.MenuMaster;
 import com.cruds.pos.entity.Tax;
 import com.cruds.pos.entity.User;
 
@@ -53,6 +57,10 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         factoryBean.setAnnotatedClasses(User.class);
         factoryBean.setAnnotatedClasses(Tax.class);
         factoryBean.setAnnotatedClasses(FormBeanTax.class);
+        factoryBean.setAnnotatedClasses(MenuMaster.class);
+        factoryBean.setAnnotatedClasses(L1Menu.class);
+        factoryBean.setAnnotatedClasses(L2Menu.class);
+        factoryBean.setAnnotatedClasses(L3Menu.class);
         return factoryBean;
     }
 

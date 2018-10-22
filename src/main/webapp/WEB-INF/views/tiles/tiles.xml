@@ -45,7 +45,18 @@
        <put-attribute name="title" value="Tax" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/taxes.jsp" />  
    </definition>
-
+	<definition name="menu" extends="base-definition">  
+       <put-attribute name="title" value="Menu" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/menu.jsp" />  
+   </definition>
+   <definition name="menumaster" extends="base-definition">  
+       <put-attribute name="title" value="MenuMaster" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/menumaster.jsp" />  
+   </definition>
+   <definition name="l1menu" extends="base-definition">  
+       <put-attribute name="title" value="l1menu" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/l1menu.jsp" />  
+   </definition>
   
    
   

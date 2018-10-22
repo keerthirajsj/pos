@@ -75,6 +75,41 @@ public class TaxDaoHbrImpl implements TaxDao{
 		session.close();
 		return true;
 	}
+
+	@Override
+	public List<Tax> getAllTaxList() {
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		String hql = "FROM Tax";
+		Query query = session.createQuery(hql); 
+		List<Tax> results = query.list();
+		tx.commit();
+		session.close();
+		return results;
+	}
+
+	@Override
+	public Tax getTaxObject(String name) {
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		String hql = "FROM Tax where name=:name";
+		Query query = session.createQuery(hql);
+		query.setParameter("name", name);
+		Tax results = (Tax) query.uniqueResult();
+		if(results != null)
+		{
+			System.out.println(results);
+		}
+		tx.commit();
+		session.close();
+		return results;
+	}
+	
+	
+	
+	
 	
 	
 	

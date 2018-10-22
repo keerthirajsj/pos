@@ -58,7 +58,11 @@ public class Tax implements Serializable{
     }
     
     
-    public Long getId() {
+    public Tax(String tax) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -115,9 +119,10 @@ public class Tax implements Serializable{
     }
 
     @Override
-    public String toString() {
-        return name;
-    }
+	public String toString() {
+		return "Tax [id=" + id + ", name=" + name + ", rate=" + rate + ", taxType=" + taxType + ", status=" + status
+				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
+	}
     
     @Override
     public int hashCode() {
