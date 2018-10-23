@@ -27,7 +27,9 @@ import com.cruds.pos.entity.L1Menu;
 import com.cruds.pos.entity.MenuMaster;
 import com.cruds.pos.entity.Tax;
 import com.cruds.pos.entity.User;
+import com.cruds.pos.formbean.EstablishFormBean;
 import com.cruds.pos.formbean.L1FormBean;
+import com.cruds.pos.service.EstablishmentService;
 import com.cruds.pos.service.L1MenuService;
 import com.cruds.pos.service.MenuMasterService;
 import com.cruds.pos.service.TaxService;
@@ -37,6 +39,9 @@ import com.cruds.pos.service.UserService;
 
 @Controller
 public class HomeController {
+	
+	@Autowired
+	EstablishmentService establishmentService;
 	@Autowired
 	UserService userService;
 	
@@ -168,4 +173,28 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value="/establishment", method=RequestMethod.GET)
+	public ModelAndView cretaeEstablish()
+	{	
+			ModelAndView mv = new ModelAndView("establishment", "EstablishFormBean", new EstablishFormBean());
+		    Map<Long, String> mmMap = menuMasterService.getAllMenu().stream().collect(Collectors.toMap(MenuMaster :: getId, MenuMaster :: getName));
+			
+			mv.addObject("MENUMASTERMAP",mmMap);
+			
+			return mv;
+		
+	}
+	
+	@RequestMapping(value="/establishment", method=RequestMethod.POST)
+	public String establishmentupost(@ModelAttribute("EstablishFormBean") EstablishFormBean establishFormBean)
+	{
+		//System.out.println(l1FormBean.getMmId());
+		//System.out.println(l1FormBean.getTaxId());
+		//System.out.println(l1FormBean.getL1MenuName());
+		//MenuMaster menu=new MenuMaster(menumaster);
+		establishmentService.createEstablishment(establishFormBean.getName(), establishFormBean.getmId());
+		return "redirect:establishment.html";
+		
+		
+	}
 }

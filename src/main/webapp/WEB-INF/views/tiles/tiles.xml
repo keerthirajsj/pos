@@ -58,6 +58,10 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/l1menu.jsp" />  
    </definition>
   
+    <definition name="establishment" extends="base-definition">  
+       <put-attribute name="title" value="establishment" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/establishment.jsp" />  
+   </definition>
    
   
    

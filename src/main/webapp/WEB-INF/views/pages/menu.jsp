@@ -4,7 +4,7 @@
  <form action="menu.html" method="post">
      <a href="menumaster" class="btn btn-info btn-block" name="Add Menu Master">MenuMaster</a>
      <a href="l1menu" class="btn btn-light btn-block" >Add L1 Menu</a>
-     <a type="submit" class="btn btn-light btn-block" >Add L2 Menu</a>
+     <a href="l1menu" class="btn btn-light btn-block" >Add L2 Menu</a>
      <a type="submit" class="btn btn-light btn-block" >Add L3 Menu</a>
  </form>   
 </div>

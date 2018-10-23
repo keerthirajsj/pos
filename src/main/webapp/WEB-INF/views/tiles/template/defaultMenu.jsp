@@ -27,7 +27,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="establishment.html">
               <i class="fa fa-building-o "></i>
               <span class="menu-title tab">Estab</span>
             </a>

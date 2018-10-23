@@ -20,7 +20,7 @@ public class DBConnectionManager {
 	{
 		Connection conn=null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/posdemo","root","root");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/posdemo","mahesh","root");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
