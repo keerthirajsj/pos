@@ -18,6 +18,7 @@ public class TaxService {
 	{
 		return dao.addTax(tax);
 	}
+	
 	public List<Tax> getAllTax1()
 	{
 		

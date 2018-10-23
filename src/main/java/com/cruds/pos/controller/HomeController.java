@@ -28,6 +28,7 @@ import com.cruds.pos.entity.MenuMaster;
 import com.cruds.pos.entity.Tax;
 import com.cruds.pos.entity.User;
 import com.cruds.pos.formbean.L1FormBean;
+import com.cruds.pos.formbean.L2FormBean;
 import com.cruds.pos.service.L1MenuService;
 import com.cruds.pos.service.MenuMasterService;
 import com.cruds.pos.service.TaxService;
@@ -47,7 +48,8 @@ public class HomeController {
 	MenuMasterService menuMasterService;
 	
 	@Autowired
-	L1MenuService l1menuser;
+	L1MenuService l1menuservice;
+
 	
 	@RequestMapping(value="/users", method=RequestMethod.GET)
 	public ModelAndView showStudentForm()
@@ -152,6 +154,8 @@ public class HomeController {
 		    Map<Long, String> taxMap = taxService.getAllTaxList().stream().collect(Collectors.toMap(Tax :: getId, Tax :: getName));
 
 			mv.addObject("TAXMAP",taxMap);
+			
+			mv.addObject("L1MENULIST", l1menuservice.getAllL1menulist());
 			return mv;
 		
 	}
@@ -162,8 +166,55 @@ public class HomeController {
 		//System.out.println(l1FormBean.getTaxId());
 		//System.out.println(l1FormBean.getL1MenuName());
 		//MenuMaster menu=new MenuMaster(menumaster);
-		l1menuser.createL1menu(l1FormBean.getL1MenuName(),l1FormBean.getMmId(),l1FormBean.getTaxId());
+		l1menuservice.createL1menu(l1FormBean.getL1MenuName(),l1FormBean.getMmId(),l1FormBean.getTaxId());
 		return "redirect:l1menu.html";
+		
+		
+	}
+	
+	@RequestMapping(value="/l2menu", method=RequestMethod.GET)
+	public ModelAndView l2menuget()
+	{	
+			ModelAndView mv = new ModelAndView("l2menu", "l2FormBean", new L2FormBean());
+		    Map<Long, String> mmMap = menuMasterService.getAllMenu().stream().collect(Collectors.toMap(MenuMaster :: getId, MenuMaster :: getName));
+			
+			mv.addObject("MENUMASTERMAP",mmMap);
+			
+		    Map<Long, String> taxMap = taxService.getAllTaxList().stream().collect(Collectors.toMap(Tax :: getId, Tax :: getName));
+
+			mv.addObject("TAXMAP",taxMap);
+			
+			
+			return mv;
+		
+	}
+	
+	@RequestMapping(value="/l2menupost", method=RequestMethod.POST)
+	public ModelAndView l2menuhandler(@RequestParam("mmId") Long mmid)
+	{
+		ModelAndView mv = new ModelAndView("l2menu", "l2FormBean", new L2FormBean());
+		Map<Long, String> l1menumap = l1menuservice.getAllL1menuList(mmid).stream().collect(Collectors.toMap(L1Menu :: getId, L1Menu :: getName));
+		System.out.println(mmid);
+		mv.addObject("L1MENULIST",l1menumap );
+		Map<Long, String> mmMap = menuMasterService.getAllMenu().stream().collect(Collectors.toMap(MenuMaster :: getId, MenuMaster :: getName));
+		
+		mv.addObject("MENUMASTERMAP",mmMap);
+		
+	    Map<Long, String> taxMap = taxService.getAllTaxList().stream().collect(Collectors.toMap(Tax :: getId, Tax :: getName));
+
+		mv.addObject("TAXMAP",taxMap);
+		return mv;
+	}
+	
+	@RequestMapping(value="/l2menu", method=RequestMethod.POST)
+	public String l2menupost(@ModelAttribute("l2FormBean") L2FormBean l2FormBean)
+	{
+	
+		if(l2FormBean.getL2MenuName()!=null)
+		{
+		l1menuservice.createl2menu(l2FormBean.getL2MenuName(),l2FormBean.getL1mmId(),l2FormBean.getPrice(),l2FormBean.getTaxId());
+		}
+		return "redirect:l2menu.html";
 		
 		
 	}

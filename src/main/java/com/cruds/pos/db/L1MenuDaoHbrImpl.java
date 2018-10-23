@@ -1,5 +1,7 @@
 package com.cruds.pos.db;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -36,6 +38,34 @@ public class L1MenuDaoHbrImpl implements L1MenuDao {
 		return true;
 	}
 
+	@Override
+	public List<L1Menu> getAllL1menu() {
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		String hql = "FROM L1Menu";
+		Query query = session.createQuery(hql); 
+		List<L1Menu> results = query.list();
+		tx.commit();
+		session.close();
+		return results;
+	}
+	@Override
+	public List<L1Menu> getAllL1menuList(Long mmId) {
+		Session session = sessionFactory.openSession();
+
+		Transaction tx = session.beginTransaction();
+		
+		MenuMaster mm = session.load(MenuMaster.class, mmId);
+		String hql = "FROM L1Menu where menumaster=:menumaster";
+		Query query = session.createQuery(hql);
+		query.setParameter("menumaster", mm);
+		List<L1Menu> results = query.list();
+		tx.commit();
+		session.close();
+		return results;
+	}
+	
 	
 	
 	
