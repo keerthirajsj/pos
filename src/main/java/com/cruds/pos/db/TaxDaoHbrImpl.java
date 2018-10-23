@@ -81,8 +81,9 @@ public class TaxDaoHbrImpl implements TaxDao{
 		Session session = sessionFactory.openSession();
 
 		Transaction tx = session.beginTransaction();
-		String hql = "FROM Tax";
+		String hql = "FROM Tax where status=:status";
 		Query query = session.createQuery(hql); 
+		query.setParameter("status", "Active");
 		List<Tax> results = query.list();
 		tx.commit();
 		session.close();
